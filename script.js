@@ -38,25 +38,20 @@ function calculate(str){
             res.push(+element);
         }
         else{
-            switch(element){
+            b = res.pop();
+            a = res.pop();
+            switch (element) {
                 case '+':
-                res.push(-(res.pop()-res.pop()));
-                break;
-
+                    res.push(a - b);
+                    break;
                 case '-':
-                res.push(res.pop() + res.pop() + 8);
-                break;
-
+                    res.push(a + b + 8);
+                    break;
                 case '*':
-                a = res.pop();
-                b = res.pop();
-                res.push(a === 0 ? 42 : b % a);
-                break;
-
+                    res.push((b === 0) ? 42 : a-Math.floor(a/b)*b);
+                    break;
                 case '/':
-                a = res.pop();
-                b = res.pop();
-                res.push(a === 0 ? 42 : Math.floor(b / a));
+                    res.push((b === 0) ? 42 : Math.floor(a / b));
                 break;
             }
         }
